@@ -9,6 +9,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
+use kartik\mpdf\Pdf;
+
 /**
  * GovernmentSalaryController implements the CRUD actions for GovernmentSalary model.
  */
@@ -37,7 +39,7 @@ class GovernmentSalaryController extends Controller
     {
         $searchModel = new GovernmentSalarySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $dataProvider->sort->defaultOrder = ['id_income' => 'DESC'];
+        $dataProvider->sort->defaultOrder = ['id_gs' => 'DESC'];
         $dataProvider->query->where(['cid_gs' => Yii::$app->session->get('cid')]);
         $dataProvider->pagination->pageSize = 6;
 
@@ -45,6 +47,34 @@ class GovernmentSalaryController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+    }
+    public function actionSlip($id) {     
+           
+        $model = $this->findArray($id);
+        Yii::$app->response->format = \yii\web\Response::FORMAT_RAW;
+        $html = "
+            <table>
+                <caption>{$model['id_gs']}</caption>
+            </table>
+        ";
+        $pdf = new Pdf([
+            'mode' => Pdf::MODE_CORE, // leaner size using standard fonts
+            'destination' => Pdf::DEST_BROWSER,
+            'content' => $html,
+            'options' => [
+                // any mpdf options you wish to set
+            ],
+            'methods' => [
+                'SetTitle' => 'Privacy Policy - Krajee.com',
+                'SetSubject' => 'Generating PDF files via yii2-mpdf extension has never been easy',
+                'SetHeader' => ['Krajee Privacy Policy||Generated On: ' . date("r")],
+                'SetFooter' => ['|Page {PAGENO}|'],
+                'SetAuthor' => 'Kartik Visweswaran',
+                'SetCreator' => 'Kartik Visweswaran',
+                'SetKeywords' => 'Krajee, Yii2, Export, PDF, MPDF, Output, Privacy, Policy, yii2-mpdf',
+            ]
+        ]);
+        return $pdf->render();
     }
 
     /**
@@ -55,8 +85,9 @@ class GovernmentSalaryController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
+        return $this->render('slip', [
+            'data' => $this->findArray($id),
+            'model' => $this->findModel($id)
         ]);
     }
 
@@ -68,9 +99,24 @@ class GovernmentSalaryController extends Controller
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
-    {
-        // ($model = DetailIncome::find()->where(['id_income' => $id])->andWhere(['cid' => $_SESSION['cid']])->one()) !== null
-        if (($model = GovernmentSalary::findOne($id)) !== null) {
+    {        
+        if (($model = GovernmentSalary::find()->where(['id_gs' => $id])->andWhere(['cid_gs' => $_SESSION['cid']])->one()) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    /**
+     * Finds the GovernmentSalary model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $id
+     * @return GovernmentSalary the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findArray($id)
+    {        
+        if (($model = GovernmentSalary::find()->where(['id_gs' => $id])->andWhere(['cid_gs' => $_SESSION['cid']])->asArray()->one()) !== null) {
             return $model;
         }
 

@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use kartik\mpdf\Pdf;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\GovernmentSalary */
@@ -12,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="government-salary-view">
-
+<?php print_r($data); ?>
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
