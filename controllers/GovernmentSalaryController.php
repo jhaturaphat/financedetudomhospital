@@ -37,6 +37,9 @@ class GovernmentSalaryController extends Controller
     {
         $searchModel = new GovernmentSalarySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->sort->defaultOrder = ['id_income' => 'DESC'];
+        $dataProvider->query->where(['cid_gs' => Yii::$app->session->get('cid')]);
+        $dataProvider->pagination->pageSize = 6;
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -66,6 +69,7 @@ class GovernmentSalaryController extends Controller
      */
     protected function findModel($id)
     {
+        // ($model = DetailIncome::find()->where(['id_income' => $id])->andWhere(['cid' => $_SESSION['cid']])->one()) !== null
         if (($model = GovernmentSalary::findOne($id)) !== null) {
             return $model;
         }
