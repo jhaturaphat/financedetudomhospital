@@ -48,33 +48,38 @@ class GovernmentSalaryController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
-    public function actionSlip($id) {     
-           
-        $model = $this->findArray($id);
-        Yii::$app->response->format = \yii\web\Response::FORMAT_RAW;
-        $html = "
-            <table>
-                <caption>{$model['id_gs']}</caption>
-            </table>
-        ";
-        $pdf = new Pdf([
-            'mode' => Pdf::MODE_CORE, // leaner size using standard fonts
-            'destination' => Pdf::DEST_BROWSER,
-            'content' => $html,
-            'options' => [
-                // any mpdf options you wish to set
-            ],
-            'methods' => [
-                'SetTitle' => 'Privacy Policy - Krajee.com',
-                'SetSubject' => 'Generating PDF files via yii2-mpdf extension has never been easy',
-                'SetHeader' => ['Krajee Privacy Policy||Generated On: ' . date("r")],
-                'SetFooter' => ['|Page {PAGENO}|'],
-                'SetAuthor' => 'Kartik Visweswaran',
-                'SetCreator' => 'Kartik Visweswaran',
-                'SetKeywords' => 'Krajee, Yii2, Export, PDF, MPDF, Output, Privacy, Policy, yii2-mpdf',
-            ]
-        ]);
-        return $pdf->render();
+    public function actionPrint($id) {  
+            $data = $this->findArray($id);
+            $content = $this->renderPartial('slip', [
+                'data' => $data                
+            ]);
+            $pdf = new Pdf([
+                'mode' => Pdf::MODE_UTF8,
+                // A4 paper format
+                'format' => Pdf::FORMAT_A4,
+                // portrait orientation
+                'orientation' => Pdf::ORIENT_PORTRAIT,
+                //Font
+                'defualt_font' => 'THSarabun',
+                // stream to browser inline
+                'destination' => Pdf::DEST_BROWSER,
+                // your html content input
+                'content' => $content,
+                // format content from your own css file if needed or use the
+                // enhanced bootstrap css built by Krajee for mPDF formatting
+                'cssFile' => '@web/css/slip.css',
+                // any css to be embedded if required
+                'cssInline' => '.bd{border:1.5px solid; text-align: center;} .ar{text-align:right} .imgbd{border:1px solid}',
+                // set mPDF properties on the fly
+                'options' => ['title' => 'Preview Report Case: '.$id],
+                // call mPDF methods on the fly
+                'methods' => [
+                    //'SetHeader'=>[''],
+                    //'SetFooter'=>['{PAGENO}'],
+                ]
+            ]);            
+            // return the pdf output as per the destination setting
+            return $pdf->render();
     }
 
     /**

@@ -26,11 +26,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            'id_gs',
-            'cid_gs',
+            //'id_gs',
+            //'cid_gs',
             'name_gs',
-            'institute_gs',
-            'institute2_gs',
+            //'institute_gs',
+            //'institute2_gs',
             //'province_gs',
             //'namebank_gs',
             //'numberbank_gs',
@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'dr_8',
             //'dr_9',
             //'dr_10',
-            //'sum_dr',
+            'sum_dr',
             //'cr_1',
             //'cr_2',
             //'cr_3',
@@ -57,13 +57,21 @@ $this->params['breadcrumbs'][] = $this->title;
             //'cr_9',
             //'cr_10',
             //'sum_cr',
-            //'net_salary',
+            'net_salary',
             //'date_gs',
             //'month_gs',
             //'id_input',
             //'year_budget',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template'=>'{view}',
+                'buttons'=>[
+                    'view' => function($url,$model,$key){
+                        return Html::a('<i class="glyphicon glyphicon-print"></i>',['/government-salary/print','id'=>$model->id_gs], ['data-pjax' => 0, 'target'=>'_blank']);
+                    }
+                ]
+            ],
         ],
     ]); ?>
 

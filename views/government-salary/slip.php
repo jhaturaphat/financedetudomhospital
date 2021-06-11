@@ -1,13 +1,19 @@
 <?php
-use kartik\mpdf\Pdf;
-echo '<pre>';
-print_r($data);
-echo '</pre>';
+    // https://programmerthailand.com/tutorial/post/view/82/extension-%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%AA%E0%B8%A3%E0%B9%89%E0%B8%B2%E0%B8%87%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B9%83%E0%B8%99%E0%B8%A3%E0%B8%B9%E0%B8%9B%E0%B9%81%E0%B8%9A%E0%B8%9A%E0%B9%84%E0%B8%9F%E0%B8%A5%E0%B9%8C-pdf-%E0%B8%94%E0%B9%89%E0%B8%A7%E0%B8%A2-mpdf
 
-echo $data['id_gs'];
+?>
 
-$pdf = new Pdf();
-$mpdf = $pdf->api; // fetches mpdf api
-$mpdf->SetHeader('Kartik Header'); // call methods or set any properties
-$mpdf->WriteHtml("xxx"); // call mpdf write html
-echo $mpdf->Output('filename', 'D'); // call the mpdf api output as needed
+<div class="slip-container">
+    <table>
+        <caption >ใบรับรองการจ่ายเงินเดือนและเงินอื่น</caption>
+        <caption >ประจำเดือน </caption>
+        <tr>
+            <td></td>
+        </tr>
+    </table>
+</div>
+
+
+
+<?php
+$this->registerCssFile("@web/css/slip.css");

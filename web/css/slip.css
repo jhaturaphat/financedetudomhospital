@@ -1,0 +1,19 @@
+table{
+    width:100%;    
+}
+caption {
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;    
+    text-align: center !important;
+    color: black !important;
+}
+tr,td{
+    border:1px solid black;
+}
+.slip-container{
+    margin: 0 auto;
+    width:520px !important;
+}
+.center{
+    margin:0 auto;
+}
