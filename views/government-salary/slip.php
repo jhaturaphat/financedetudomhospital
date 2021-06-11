@@ -6,7 +6,7 @@
 <div class="slip-container">
     <table>
         <caption >ใบรับรองการจ่ายเงินเดือนและเงินอื่น</caption>
-        <caption >ประจำเดือน </caption>
+        <caption >ประจำเดือน</caption>
         <tr>
             <td></td>
         </tr>

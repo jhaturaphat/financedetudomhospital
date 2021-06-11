@@ -58,16 +58,14 @@ class GovernmentSalaryController extends Controller
                 // A4 paper format
                 'format' => Pdf::FORMAT_A4,
                 // portrait orientation
-                'orientation' => Pdf::ORIENT_PORTRAIT,
-                //Font
-                'defualt_font' => 'THSarabun',
+                'orientation' => Pdf::ORIENT_PORTRAIT,                
                 // stream to browser inline
                 'destination' => Pdf::DEST_BROWSER,
                 // your html content input
                 'content' => $content,
                 // format content from your own css file if needed or use the
                 // enhanced bootstrap css built by Krajee for mPDF formatting
-                'cssFile' => '@web/css/slip.css',
+                //'cssFile' => '@web/css/slip.css',
                 // any css to be embedded if required
                 'cssInline' => '.bd{border:1.5px solid; text-align: center;} .ar{text-align:right} .imgbd{border:1px solid}',
                 // set mPDF properties on the fly
@@ -78,6 +76,24 @@ class GovernmentSalaryController extends Controller
                     //'SetFooter'=>['{PAGENO}'],
                 ]
             ]);            
+
+            $defaultConfig = (new \Mpdf\Config\ConfigVariables())->getDefaults();
+            $fontDirs = $defaultConfig['fontDir'];
+
+            $defaultFontConfig = (new \Mpdf\Config\FontVariables())->getDefaults();
+            $fontData = $defaultFontConfig['fontdata'];
+
+            $pdf->options = array_merge($pdf->options , [
+                'fontDir' => array_merge($fontDirs, [ Yii::$app->basePath . '/assets/font']),  // make sure you refer the right physical path
+                'fontdata' => array_merge($fontData, [
+                    'thsarabun' => [
+                        'R' => 'THSarabunNew.ttf',
+                        'I' => 'THSarabunNew Italic.ttf',
+                        'B' => 'THSarabunNew Bold.ttf',
+                    ]
+                ])
+            ]);
+
             // return the pdf output as per the destination setting
             return $pdf->render();
     }
