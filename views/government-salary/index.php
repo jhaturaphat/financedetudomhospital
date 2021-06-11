@@ -65,9 +65,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template'=>'{view}',
+                'template'=>'{view} {print}',
                 'buttons'=>[
                     'view' => function($url,$model,$key){
+                        return Html::a('<i class="glyphicon glyphicon-eye-open"></i>',$url);
+                    },
+                    'print' => function($url,$model,$key){
                         return Html::a('<i class="glyphicon glyphicon-print"></i>',['/government-salary/print','id'=>$model->id_gs], ['data-pjax' => 0, 'target'=>'_blank']);
                     }
                 ]

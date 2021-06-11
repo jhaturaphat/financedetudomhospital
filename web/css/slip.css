@@ -7,13 +7,41 @@ caption {
     text-align: center !important;
     color: black !important;
 }
-tr,td{
+tr:nth-child(1)>td{
     border:1px solid black;
+}
+tr>td{
+    border-left: 1px solid black;
+    border-right: 1px solid black;
 }
 .slip-container{
     margin: 0 auto;
-    width:520px !important;
+    width:480px !important;
 }
 .center{
     margin:0 auto;
 }
+/* style border 1px solid black; */
+.b-all{
+    border: 1px solid black;
+}
+.b-r{
+    border-right: 1px solid black;
+}
+.b-l{
+    border-left: 1px solid black;
+}
+.b-t{
+    border-top: 1px solid black;
+}
+.b-b{
+    border-bottom: 1px solid black;
+}
+
+
+@media print {
+    .slip-container{
+        margin: 0 auto;
+        width:480px !important;
+    }
+  }
