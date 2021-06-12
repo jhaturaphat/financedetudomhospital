@@ -1,3 +1,15 @@
+@font-face {
+    font-family: thsarabunnew;
+    src: url(../font/THSarabunNew.ttf);
+  }
+
+#title {
+    width: 100%;
+}
+#title tr td{
+    border: none;
+}
+
 table{
     width:100%;    
 }
@@ -10,13 +22,22 @@ caption {
 tr:nth-child(1)>td{
     border:1px solid black;
 }
+.b-none{
+    border: none;
+}
+.b-l-r-none{
+    border-right: none;
+    border-left: none;
+}
 tr>td{
     border-left: 1px solid black;
     border-right: 1px solid black;
 }
 .slip-container{
+    font-family: "thsarabunnew";    
+    font-size:15pt;
     margin: 0 auto;
-    width:480px !important;
+    width:460px !important;
 }
 .center{
     margin:0 auto;
@@ -42,6 +63,6 @@ tr>td{
 @media print {
     .slip-container{
         margin: 0 auto;
-        width:480px !important;
+        width:460px !important;
     }
   }

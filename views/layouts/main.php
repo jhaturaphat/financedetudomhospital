@@ -42,7 +42,7 @@ AppAsset::register($this);
         'items' => [
             //['label' => 'Home', 'url' => ['/site/index']],
             //['label' => 'About', 'url' => ['/site/about']],
-            //['label' => 'Contact', 'url' => ['/site/contact']],
+            ['label' => 'ข้าราชการ', 'url' => ['/government-salary']],
             ['label' => 'เงินเดือน', 'url' => ['/detail-income/index'],'visible'=>isset($_SESSION['cid'])],
             !isset($_SESSION['cid']) ? (
                 ['label' => 'เข้าใช้งาน', 'url' => ['/site/login']]
@@ -61,7 +61,7 @@ AppAsset::register($this);
     NavBar::end();
     ?>
     
-    <div class="container">
+    <div class="container ">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>

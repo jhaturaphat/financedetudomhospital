@@ -3,58 +3,41 @@
 
 ?>
 
-<div class="slip-container">
-    <div class="col-md-12">
-        <div class="col-md-2"></div>
-        <div class="col-md-10">
-            ใบรับรองการจ่ายเงินเดือนและเงินอื่น<br>
-            ประจำเดือน <i><?= $model->month_gs ?></i>
-        </div>
-        <!--  -->
-        <div class="col-md-2 text-right" style="padding:0">
-            ชื่อ-นามสกุล
-        </div>
-        <div class="col-md-10">            
-            <?= $model->name_gs ?>
-        </div>
-        <!--  -->
-        <div class="col-md-2 text-right" style="padding:0">
-            หน่วยงาน
-        </div>
-        <div class="col-md-10">            
-            <?= $model->institute_gs ?>
-        </div>
-        <!--  -->
-        <div class="col-md-2 text-right" style="padding:0">
-            
-        </div>
-        <div class="col-md-10">            
-            <?= $model->institute2_gs ?>
-        </div>
-        <!--  -->
-        <div class="col-md-2 text-right" style="padding:0">
-            จังหวัด
-        </div>
-        <div class="col-md-10">            
-            <?= $model->province_gs ?>
-        </div>
-        <!--  -->
-        <div class="col-md-2 text-right" style="padding:0">
-            โอนเงินเข้า
-        </div>
-        <div class="col-md-10">            
-            <?= $model->namebank_gs ?>
-        </div>
-        <!--  -->
-        <div class="col-md-2 text-right" style="padding:0">
-            เลขบัญชี
-        </div>
-        <div class="col-md-10">            
-            <?= $model->numberbank_gs ?>
-            <i>เลขตำแหน่ง <?= $model->position_numbe_gs ?></i>
-        </div>
-        <!--  -->
-    </div>
+<div class="slip-container">    
+    <table id="title">
+        <tr>
+            <td class="b-none" width="25%"></td>
+            <td class="b-none" width="75%">ใบรับรองการจ่ายเงินเดือนและเงินอื่น</td>
+        </tr>
+        <tr>
+            <td class="b-none" width="25%"></td>
+            <td class="b-none" width="75%">ประจำเดือน <i><?= $model->month_gs ?></i></td>
+        </tr>
+        <tr>
+            <td class="b-none" width="25%">ชื่อ-นามสกุล</td>
+            <td class="b-none" width="75%"><?= $model->name_gs ?></td>
+        </tr>
+        <tr>
+            <td class="b-none" width="25%">หน่วยงาน</td>
+            <td class="b-none" width="75%"><?= $model->institute_gs ?></td>
+        </tr>
+        <tr>
+            <td class="b-none" width="25%"></td>
+            <td class="b-none" width="75%"><?= $model->institute2_gs ?></td>
+        </tr>
+        <tr>
+            <td class="b-none" width="25%">จังหวัด</td>
+            <td class="b-none" width="75%"><?= $model->province_gs ?></td>
+        </tr>
+        <tr>
+            <td class="b-none" width="25%">โอนเงินเข้า</td>
+            <td class="b-none" width="75%"><?= $model->namebank_gs ?></td>
+        </tr>
+        <tr>
+            <td class="b-none" width="25%">เลขบัญชี</td>
+            <td class="b-none" width="75%"><?= $model->numberbank_gs ?> <i>เลขตำแหน่ง <?= $model->position_numbe_gs ?></i></td>
+        </tr>
+    </table>
     <table>        
         <tr>
             <td class="text-center" width="10%">ลำดับ</td>
@@ -117,10 +100,77 @@
             <td class="text-center" width="20%"><?= ($model->dr_10 == ".00"? "-":$model->dr_10) ?></td>
         </tr>
         <tr>
-            <td class="text-center" width="10%"></td>
-            <td class="text-right" width="70%">รวม</td>
+            <td class="text-center b-b" width="10%"></td>
+            <td class="text-right b-b" width="70%">รวม</td>
             <td class="text-center b-all" width="20%"><?= $model->sum_dr ?></td>
         </tr>
+        <!-- รายการหัก -->
+        <tr>
+            <td class="text-center" width="10%"></td>
+            <td class="text-left" width="70%">รายจ่าย</td>
+            <td class="text-center" width="20%"></td>
+        </tr>
+        <tr>
+            <td class="text-center" width="10%">1</td>
+            <td class="text-left" width="70%">ภาษี</td>
+            <td class="text-center" width="20%"><?= $model->cr_1 ?></td>
+        </tr>
+        <tr>
+            <td class="text-center" width="10%">2</td>
+            <td class="text-left" width="70%">ค่าทุนเรือนหุ้น - เงินกู้สหกรณ์</td>
+            <td class="text-center" width="20%"><?= $model->cr_2 ?></td>
+        </tr>
+        <tr>
+            <td class="text-center" width="10%">3</td>
+            <td class="text-left" width="70%">กบข./กสจ. (รายเดือน)</td>
+            <td class="text-center" width="20%"><?= $model->cr_3 ?></td>
+        </tr>
+        <tr>
+            <td class="text-center" width="10%">4</td>
+            <td class="text-left" width="70%">เงินกู้เพื่อที่อยู่อาศัย</td>
+            <td class="text-center" width="20%"><?= $model->cr_4 ?></td>
+        </tr>
+        <tr>
+            <td class="text-center" width="10%">5</td>
+            <td class="text-left" width="70%">เงินกู้เพื่อการศึกษา</td>
+            <td class="text-center" width="20%"><?= $model->cr_5 ?></td>
+        </tr>
+        <tr>
+            <td class="text-center" width="10%">6</td>
+            <td class="text-left" width="70%">เงินกู้ยานพาหนะ</td>
+            <td class="text-center" width="20%"><?= $model->cr_6 ?></td>
+        </tr>
+        <tr>
+            <td class="text-center" width="10%">7</td>
+            <td class="text-left" width="70%">ค่าฌาปนกิจ / เงินช่วยเหลืองานศพ</td>
+            <td class="text-center" width="20%"><?= $model->cr_7 ?></td>
+        </tr>
+        <tr>
+            <td class="text-center" width="10%">8</td>
+            <td class="text-left" width="70%">เงินบำรุง / เงินทุน /กู้สวัสดิการ / สงเคราะห์</td>
+            <td class="text-center" width="20%"><?= $model->cr_8 ?></td>
+        </tr>
+        <tr>
+            <td class="text-center" width="10%">9</td>
+            <td class="text-left" width="70%">เงินบำรุงเรียกคืน / ชดใช้ทางแพ่ง / อายัดเงิน</td>
+            <td class="text-center" width="20%"><?= $model->cr_9 ?></td>
+        </tr>
+        <tr>
+            <td class="text-center" width="10%">10</td>
+            <td class="text-left" width="70%">อื่น ๆ</td>
+            <td class="text-center" width="20%"><?= $model->cr_10 ?></td>
+        </tr>
+        <tr>
+            <td class="text-center b-b" width="10%"></td>
+            <td class="text-right b-b" width="70%">รวม</td>
+            <td class="text-center b-all" width="20%"><?= $model->sum_cr ?></td>
+        </tr>
+        <tr>
+            <td class="text-center b-l-r-none" width="10%"></td>
+            <td class="text-right b-l-r-none" width="70%">รับสุทธิ</td>
+            <td class="text-center b-l b-r b-b" width="20%"><?= $model->net_salary ?></td>
+        </tr>
+        
     </table>
 </div>
 
