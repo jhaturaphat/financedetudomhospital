@@ -59,15 +59,23 @@ class GovernmentSalaryController extends Controller
                 'format' => Pdf::FORMAT_A4,                
                 'orientation' => Pdf::ORIENT_PORTRAIT, 
                 'destination' => Pdf::DEST_BROWSER,               
-                'content' => $content,                
-                //'cssFile' => '@web/css/slip.css',                
-                'cssInline' => '*{font-family: thsarabunnew}',  
+                'content' => $content, 
+                'cssFile' => Yii::getAlias('@webroot').'/css/slip.css',                
+                //'cssInline' => '',  
                 'options' => ['title' => 'Preview Report Case: '.$id],                
                 'methods' => [
                     //'SetHeader'=>[''],
                     //'SetFooter'=>['{PAGENO}'],
-                ]
-            ]);            
+                ],
+                // 'marginLeft' => 10,
+                // 'marginRight' => 10,
+                // 'marginTop' => 10,
+                // 'marginBottom' => 10,
+                // 'marginFooter' => 5
+            ]);   
+            
+            // echo Yii::getAlias('@web');
+            // echo Yii::$app->basePath; exit;
 
             $defaultConfig = (new \Mpdf\Config\ConfigVariables())->getDefaults();
             $fontDirs = $defaultConfig['fontDir'];
@@ -76,9 +84,9 @@ class GovernmentSalaryController extends Controller
             $fontData = $defaultFontConfig['fontdata'];
 
             $pdf->options = array_merge($pdf->options , [
-                'fontDir' => array_merge($fontDirs, [ Yii::$app->basePath . '/web/font']),  // make sure you refer the right physical path
+                'fontDir' => array_merge($fontDirs, [ Yii::$app->basePath . '/web/fonts']),  
                 'fontdata' => array_merge($fontData, [
-                    'thsarabunnew' => [
+                    'sarabun' => [
                         'R' => 'THSarabunNew.ttf',
                         'I' => 'THSarabunNew Italic.ttf',
                         'B' => 'THSarabunNew Bold.ttf',
