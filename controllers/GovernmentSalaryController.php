@@ -106,10 +106,10 @@ class GovernmentSalaryController extends Controller
      */
     public function actionView($id)
     {
-        /*return $this->render('slip', [
+        return $this->render('slip', [
             'data' => $this->findArray($id),
             'model' => $this->findModel($id)
-        ]);*/
+        ]);
     }
 
     /**
