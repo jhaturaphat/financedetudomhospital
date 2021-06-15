@@ -58,8 +58,13 @@ class SiteController extends Controller {
      * @return string
      */
     public function actionIndex() {
-        //return $this->render('index');
-        return $this->redirect(['/site/login']);
+        //
+        if(isset($_SESSION['cid'])){
+            return $this->render('index');
+        }else{
+            return $this->redirect(['/site/login']);
+        }
+        
     }
 
     /**
@@ -82,7 +87,8 @@ class SiteController extends Controller {
 
         $params = $request->bodyParams;
         if ($model->load(Yii::$app->request->post()) && $model->getIncome($params)) {
-            return $this->redirect(['/detail-income/index']);
+            //return $this->redirect(['/detail-income/index']);
+            return $this->render('index');
         }
 
         $model->cid = '';

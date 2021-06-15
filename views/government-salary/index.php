@@ -7,16 +7,12 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\GovernmentSalarySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Government Salaries';
+$this->title = 'สลิปเงินเดือนข้าราชการและค่าจ้างลูกจ้างประจำ';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="government-salary-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Create Government Salary', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
 
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -58,14 +54,14 @@ $this->params['breadcrumbs'][] = $this->title;
             //'cr_10',
             //'sum_cr',
             'net_salary',
-            //'date_gs',
+            'date_gs',
             //'month_gs',
             //'id_input',
             //'year_budget',
 
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template'=>'{view} {print}',
+                'template'=>'{view}',
                 'buttons'=>[
                     'view' => function($url,$model,$key){
                         return Html::a('<i class="glyphicon glyphicon-eye-open"></i>',$url);

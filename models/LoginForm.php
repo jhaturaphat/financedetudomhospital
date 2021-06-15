@@ -5,6 +5,7 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use app\models\DetailIncome;
+use app\models\AccountUser;
 
 /**
  * LoginForm is the model behind the login form.
@@ -87,8 +88,10 @@ class LoginForm extends Model
             $_model = \app\models\DetailIncome::find()
                             ->where(['cid' => $cid])
                             ->andWhere(['number_account' => $params['LoginForm']['number_account']])->all();
-            if($_model){                
+            if($_model){  
+                $accountUser = AccountUser::getUser($cid);           
                 $_SESSION['cid'] = $cid;
+                $_SESSION['fname'] = $accountUser->name_account_user;
                 return $_model;
             }
         }

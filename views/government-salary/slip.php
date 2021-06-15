@@ -36,10 +36,9 @@
         </tr>
         <tr>
             <td class="b-none" width="25%">เลขบัญชี</td>
-            <td class="b-none" width="75%"><?= substr_replace($model->numberbank_gs,'XXXXXX',0,6) ?> 
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                เลขตำแหน่ง <?= $model->position_numbe_gs ?>
+            <td class="b-none" width="100%" style="display:flex; justify-content:space-between">
+            <i class=""><?= substr_replace($model->numberbank_gs,'XXXXXX',0,6) ?> </i>
+            <i class="">เลขตำแหน่ง <?= $model->position_numbe_gs ?></i>
             </td>            
         </tr>
     </table>
@@ -177,8 +176,8 @@
         </tr>        
     </table>
     <br><br>
-    <div class="text-center" style="font-family: sarabun; font-size: 10pt; text-align:center">
-        ลงชื่อ.................................................................................ผู้มีหน้าที่จ่ายเงิน<br>
+    <div class="text-center" id="signature">
+        ลงชื่อ......................................................ผู้มีหน้าที่จ่ายเงิน<br>
         ....../....../...... <br>
         วัน เดือน ปี ที่ออกหนังสือรับรอง
     </div>

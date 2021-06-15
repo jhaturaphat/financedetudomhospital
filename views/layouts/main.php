@@ -41,16 +41,15 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             //['label' => 'Home', 'url' => ['/site/index']],
-            //['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'ข้าราชการ', 'url' => ['/government-salary']],
-            ['label' => 'เงินเดือน', 'url' => ['/detail-income/index'],'visible'=>isset($_SESSION['cid'])],
+            ['label' => 'เงินเดือน/ลูกจ้าง/พนักงาน/OT', 'url' => ['/detail-income/index'],'visible'=>isset($_SESSION['cid'])],
+            ['label' => 'สลิปเงินเดือนข้าราชการและค่าจ้างลูกจ้างประจำ', 'url' => ['/government-salary'] ,'visible'=>isset($_SESSION['cid'])],            
             !isset($_SESSION['cid']) ? (
                 ['label' => 'เข้าใช้งาน', 'url' => ['/site/login']]
             ) : (
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post')
                 . Html::submitButton(
-                    'ออก (' . $_SESSION['cid'] . ')',
+                    'ออก (' . $_SESSION['fname'] . ')',
                     ['class' => 'btn btn-link logout']
                 )
                 . Html::endForm()
