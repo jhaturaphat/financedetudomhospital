@@ -86,7 +86,7 @@ class SiteController extends Controller {
         }
 
         $params = $request->bodyParams;
-        if ($model->load(Yii::$app->request->post()) && $model->getIncome($params)) {
+        if ($model->load(Yii::$app->request->post()) && $model->loginSaraly($params)) {
             //return $this->redirect(['/detail-income/index']);
             return $this->render('index');
         }

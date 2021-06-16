@@ -37,7 +37,7 @@
         <tr>
             <td class="b-none" width="25%">เลขบัญชี</td>
             <td class="b-none" width="100%" style="display:flex; justify-content:space-between">
-            <i class=""><?= substr_replace($model->numberbank_gs,'XXXXXX',0,6) ?> </i>
+            <i class=""><?= Yii::$app->utility->convertToXx($model->numberbank_gs) ?> </i>
             <i class="">เลขตำแหน่ง <?= $model->position_numbe_gs ?></i>
             </td>            
         </tr>

@@ -82,19 +82,33 @@ class LoginForm extends Model
     }
     
     
-    public function getIncome($params){
+    public function loginSaraly($params){
         if ($this->validate()) {
            $cid = str_replace('-', '', $params['LoginForm']['cid']);
             $_model = \app\models\DetailIncome::find()
                             ->where(['cid' => $cid])
                             ->andWhere(['number_account' => $params['LoginForm']['number_account']])->all();
-            if($_model){  
-                $accountUser = AccountUser::getUser($cid);           
+
+            $accountUser = AccountUser::getUser($cid);
+            if($_model){   
                 $_SESSION['cid'] = $cid;
                 $_SESSION['fname'] = $accountUser->name_account_user;
                 return $_model;
+            }else{
+                // ตรวจสอบเขื่อนไขที 2 ถ้าหาไม่เจอบนเงื่อนไขแรก 
+                $_model = \app\models\GovernmentSalary::find()
+                            ->where(['cid_gs' => $cid])
+                            ->andWhere(['numberbank_gs' => $params['LoginForm']['number_account']])->all();
+                if($_model){  
+                    $accountUser = AccountUser::getUser($cid);           
+                    $_SESSION['cid'] = $cid;
+                    $_SESSION['fname'] = $accountUser->name_account_user;
+                    return $_model;
+                }else{                    
+                    return false;
+                }
             }
-        }
+        }        
         return false;
     }
 
