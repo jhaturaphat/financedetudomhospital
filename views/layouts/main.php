@@ -40,7 +40,7 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            //['label' => 'Home', 'url' => ['/site/index']],
+            ['label' => 'หน้าแรก', 'url' => ['/site/index']],
             ['label' => 'เงินเดือน/ลูกจ้าง/พนักงาน/OT', 'url' => ['/detail-income/index'],'visible'=>isset($_SESSION['cid'])],
             ['label' => 'สลิปเงินเดือนข้าราชการและค่าจ้างลูกจ้างประจำ', 'url' => ['/government-salary'] ,'visible'=>isset($_SESSION['cid'])],            
             !isset($_SESSION['cid']) ? (

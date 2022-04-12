@@ -178,8 +178,11 @@
     <br><br>
     <div class="text-center" id="signature">
         ลงชื่อ......................................................ผู้มีหน้าที่จ่ายเงิน<br>
-        ....../....../...... <br>
+        ( <?= Yii::$app->utility->dateOutSlip($model->date_gs) ?> ) <br>
         วัน เดือน ปี ที่ออกหนังสือรับรอง
+    </div>    
+    <div class="text-right hidden-print" style="margin-top: 30px">
+        <button class="btn btn-info btn-block" onclick="window.print()"><i class="glyphicon glyphicon-print"></i> พิมพ์</button>
     </div>
 </div>
 

@@ -30,6 +30,7 @@ use Yii;
  * @property string $dr_12
  * @property string $dr_13
  * @property string $dr_14
+ * @property string $dr_15
  * @property string $sum_dr
  * @property string $cr_1
  * @property string $cr_2
@@ -56,6 +57,7 @@ use Yii;
  * @property string $cr_22
  * @property string $cr_23
  * @property string $cr_24
+ * @property string $cr_25
  * @property string $sum_cr
  * @property string $total_income
  * @property string $date_income
@@ -87,7 +89,7 @@ class DetailIncome extends \yii\db\ActiveRecord
             [['number_income'], 'integer'],
             [['date_income'], 'safe'],
             [['view_state'], 'string'],
-            [['cid', 'number_account', 'dr_1', 'dr_2', 'dr_3', 'dr_4', 'dr_5', 'dr_6', 'dr_7', 'dr_8', 'dr_9', 'dr_10', 'dr_11', 'dr_11', 'dr_13', 'dr_14', 'sum_dr', 'cr_1', 'cr_2', 'cr_3', 'cr_4', 'cr_5', 'cr_6', 'cr_7', 'cr_8', 'cr_9', 'cr_10', 'cr_11', 'cr_12', 'cr_13', 'cr_14', 'cr_15', 'cr_16', 'cr_17', 'cr_18', 'cr_19', 'cr_20', 'cr_21', 'cr_22', 'cr_23', 'sum_cr', 'total_income'], 'string', 'max' => 20],
+            [['cid', 'number_account', 'dr_1', 'dr_2', 'dr_3', 'dr_4', 'dr_5', 'dr_6', 'dr_7', 'dr_8', 'dr_9', 'dr_10', 'dr_11', 'dr_11', 'dr_13', 'dr_14', 'sum_dr', 'cr_1', 'cr_2', 'cr_3', 'cr_4', 'cr_5', 'cr_6', 'cr_7', 'cr_8', 'cr_9', 'cr_10', 'cr_11', 'cr_12', 'cr_13', 'cr_14', 'cr_15', 'cr_16', 'cr_17', 'cr_18', 'cr_19', 'cr_20', 'cr_21', 'cr_22', 'cr_23', 'cr_24','cr_25', 'sum_cr', 'total_income'], 'string', 'max' => 20],
             [['name_account_user'], 'string', 'max' => 150],
             [['dr_2note', 'dr_8note', 'dr_10note', 'dr_11note', 'cr_11note', 'month_income', 'note_income', 'id_input'], 'string', 'max' => 50],
             [['type_income', 'year_budget'], 'string', 'max' => 10],
@@ -125,6 +127,7 @@ class DetailIncome extends \yii\db\ActiveRecord
             'dr_12' => 'โอทีค่าตอบแทน SMC.',
             'dr_13' => 'ค่าตอบแทนเวชศาสตร์ครอบครัว',
             'dr_14' => 'ค่าตอบแทน โควิด-19',
+            'dr_15' => 'ค่าตอบแทนปฎิบัติงานต่างหน่วยบริการ',
             'sum_dr' => 'รวมรับ',
             'cr_1' => 'หัก ลากิจ',
             'cr_2' => 'ประกันสังคม',
@@ -134,7 +137,7 @@ class DetailIncome extends \yii\db\ActiveRecord
             'cr_6' => 'ธ.ออมสิน',
             'cr_7' => 'ธกส.',
             'cr_8' => 'ฌกส.',
-            'cr_9' => 'หักเงินเข้ากลุ่มงาน(เดือน/ปี)',
+            'cr_9' => 'หักสวัสดิการกลุ่มการพยาบาล',
             'cr_10' => 'ร้านค้าสวัสดิการ',
             'cr_11' => 'ค่าไฟฟ้า/ค่าน้ำประปา',
             'cr_11note' => 'รายละเอียด ค่าไฟฟ้า/ค่าน้ำประปา',
@@ -151,6 +154,7 @@ class DetailIncome extends \yii\db\ActiveRecord
             'cr_22' => 'ค่าธรรมเนียมธนาคาร',
 			'cr_23' => 'เอไอเอ',
 			'cr_24' => 'กยศ./กรอ.',
+            'cr_25' => 'เบิกเกินส่งคืน',
             'sum_cr' => 'รวมหัก',
             'total_income' => 'คงเหลือสุทธิ',
             'date_income' => 'วันที่จ่ายเงิน',

@@ -98,6 +98,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'dr_11note',
             'dr_13',
             'dr_14',
+            'dr_15',            
             'cr_1',
             'sum_dr',
             'cr_2',
@@ -109,6 +110,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'cr_8', 	//ฌกส
 			'cr_24',    //กยศ./กรอ.
 			'cr_23', 	//เอไอเอ
+            'cr_25',  
             'cr_9',
             'cr_10',
             'cr_11',
@@ -123,7 +125,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'cr_19',
             'cr_20',
             'cr_21',
-            'cr_22',
+            'cr_22',  
             //'sum_cr',
             [
                 'attribute' => 'sum_cr',
